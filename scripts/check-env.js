@@ -1,10 +1,10 @@
 import { styleText } from 'node:util'
 
 if (process.env.npm_command === 'install') {
-  const allowedPackageManager = 'pnpm'
+  const allowedPackageManagers = ['pnpm', 'npm']
   const currentPackageManager = process.env.npm_config_user_agent?.split('/')[0] || 'unknown'
-  if (currentPackageManager !== allowedPackageManager) {
-    console.log(styleText('red', `\nError: This project must use ${allowedPackageManager} as the package manager. The current package manager used is ${currentPackageManager}. Please use the command ${styleText('underline', `${allowedPackageManager} install`)} to install dependencies .\n`))
+  if (!allowedPackageManagers.includes(currentPackageManager)) {
+    console.log(styleText('red', `\nError: This project must use pnpm or npm as the package manager. The current package manager used is ${currentPackageManager}. Please use ${styleText('underline', 'pnpm install')} or ${styleText('underline', 'npm install')} to install dependencies .\n`))
     process.exit(1)
   }
 

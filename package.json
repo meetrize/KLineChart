@@ -61,7 +61,7 @@
     "build-core": "pnpm build-esm && pnpm build-cjs && pnpm build-umd",
     "build-dts": "node scripts/build/build-dts.js",
     "build": "pnpm clean && pnpm build-core && pnpm build-dts",
-    "docs:dev": "pnpm -F=docs dev",
+    "docs:dev": "npm --prefix docs run dev",
     "docs:build": "pnpm build-umd:prod && pnpm -F=docs build",
     "docs:preview": "pnpm -F=docs preview",
     "docs:deploy": "pnpm docs:build && gh-pages -d website",
